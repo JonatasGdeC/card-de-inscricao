@@ -29,6 +29,7 @@ export const Text = styled.p`
   line-height: 24px;
 `
 export const Button = styled.button`
+  width: 100%;
   padding: 18px;
   border: none;
   border-radius: 8px;
