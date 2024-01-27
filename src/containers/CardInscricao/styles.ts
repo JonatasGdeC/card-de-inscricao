@@ -11,7 +11,7 @@ export const Card = styled.div`
 `
 
 export const Informativo = styled.div`
-  padding: 74px 64px;
+  padding: 74px 0 74px 64px;
 `
 
 export const Lista = styled.ul`
@@ -48,4 +48,26 @@ export const Form = styled.form`
 
 export const Imagens = styled.div`
   background: linear-gradient(204.47deg, #ff6a3a 0%, #ff527b 100%);
+  border-radius: 16px;
+  position: relative;
+  width: 400px;
+  height: 590px;
+
+  img:nth-child(1) {
+    position: absolute;
+    left: 0;
+    top: 210px;
+  }
+
+  img:nth-child(2) {
+    position: absolute;
+    right: 0;
+    top: 115px;
+  }
+
+  img:nth-child(3) {
+    position: absolute;
+    right: 0;
+    top: 90px;
+  }
 `

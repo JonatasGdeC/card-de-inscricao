@@ -1,9 +1,12 @@
 import { Title, Text, Button } from '../../styles/index'
 import * as S from './styles'
 
-const CardInscricao = () => {
-  const imgCheck = require('../../images/check.png')
+import imgCheck from '../../images/check.png'
+import imgTablet from '../../images/tablet.png'
+import imgLousa from '../../images/lousa.png'
+import imgDados from '../../images/dados.png'
 
+const CardInscricao = () => {
   return (
     <S.Card>
       <S.Informativo>
@@ -29,7 +32,11 @@ const CardInscricao = () => {
           <Button type="submit">Subscribe to monthly newsletter</Button>
         </S.Form>
       </S.Informativo>
-      <S.Imagens></S.Imagens>
+      <S.Imagens>
+        <img src={imgTablet} alt="" />
+        <img src={imgLousa} alt="" />
+        <img src={imgDados} alt="" />
+      </S.Imagens>
     </S.Card>
   )
 }
