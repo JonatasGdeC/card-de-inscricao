@@ -33,9 +33,9 @@ export const Button = styled.button`
   padding: 18px;
   border: none;
   border-radius: 8px;
-  background-color: #242742;
+  background: linear-gradient(#242742 0%, #242742 100%);
   color: #fff;
-  font-wight: bold;
+  font-weight: bold;
   cursor: pointer;
   transition: all ease 0.3s;
 
