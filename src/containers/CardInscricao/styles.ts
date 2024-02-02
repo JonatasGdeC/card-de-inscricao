@@ -27,22 +27,51 @@ export const Lista = styled.ul`
   }
 `
 
-export const Form = styled.form`
+type Props = {
+  emailCorreto: boolean
+}
+
+export const Form = styled.form<Props>`
   display: flex;
   flex-direction: column;
 
-  label {
-    font-weight: bold;
-    cursor: pointer;
+  div {
+    display: flex;
+    justify-content: space-between;
+
+    label {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    p {
+      color: #ff6155;
+      font-weight: bold;
+      display: ${(props) => (props.emailCorreto ? 'none' : 'block')};
+    }
   }
 
   input {
     padding: 16px 24px;
     margin: 8px 0 24px;
     font-size: 16px;
-    border: 1px solid rgba(25, 24, 43, 0.25);
+    border: 1px solid;
     border-radius: 8px;
+    border-color: ${(props) =>
+      props.emailCorreto ? 'rgba(25, 24, 43, 0.25)' : '#FF6155'};
+    background: ${(props) => (props.emailCorreto ? '#fff' : '#fbd8d6')};
+    color: ${(props) => (props.emailCorreto ? '#242742' : '#FF6155')};
     cursor: pointer;
+
+    &:focus {
+      box-shadow: 0 0 0 0;
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: ${(props) =>
+        props.emailCorreto ? 'rgba(25, 24, 43, 0.7)' : '#FF6155'};
+    }
   }
 `
 

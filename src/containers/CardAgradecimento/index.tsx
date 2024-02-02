@@ -19,8 +19,8 @@ const CardAgradecimento: React.FC<CardAgradecimentoProps> = ({ email }) => {
       <img src={imgCard} alt="" />
       <Title>Thanks for subscribing!</Title>
       <Text>
-        A confirmation email has been sent to {email}. Please open it and click
-        the button inside to confirm your subscription.
+        A confirmation email has been sent to <b>{email}</b>. Please open it and
+        click the button inside to confirm your subscription.
       </Text>
       <Button onClick={voltarCardInscricao}>Dismiss message</Button>
     </S.Card>

@@ -15,12 +15,20 @@ interface CardInscricaoProps {
 }
 
 const CardInscricao: React.FC<CardInscricaoProps> = ({ onSubmit }) => {
-  const [email, setEmail] = useState('')
   const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [emailPreeenchido, setEmailPreenchido] = useState(true)
+
+  const emailFilter = /^.+@.+\..{2,}$/
+  // eslint-disable-next-line no-useless-escape
+  const illegalChars = /[\(\)\<\>\,\;\:\\\/\"\[\]]/
+
   const cadastroEmail = (e: FormEvent) => {
     e.preventDefault()
-    onSubmit(email)
-    navigate('/thanks')
+    if (emailPreeenchido) {
+      onSubmit(email)
+      navigate('/thanks')
+    }
   }
 
   return (
@@ -49,16 +57,36 @@ const CardInscricao: React.FC<CardInscricaoProps> = ({ onSubmit }) => {
               <p>And much more!</p>
             </li>
           </S.Lista>
-          <S.Form onSubmit={cadastroEmail}>
-            <label htmlFor="email">Email address</label>
+          <S.Form emailCorreto={emailPreeenchido} onSubmit={cadastroEmail}>
+            <div>
+              <label htmlFor="email">Email address</label>
+              <p>Valid email required</p>
+            </div>
             <input
-              type="email"
+              type="text"
               id="email"
               placeholder="email@company.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Button type="submit">Subscribe to monthly newsletter</Button>
+            <Button
+              type="submit"
+              onClick={() =>
+                setEmailPreenchido(() => {
+                  if (
+                    email === '' ||
+                    !emailFilter.test(email) ||
+                    email.match(illegalChars)
+                  ) {
+                    return false
+                  } else {
+                    return true
+                  }
+                })
+              }
+            >
+              Subscribe to monthly newsletter
+            </Button>
           </S.Form>
         </S.Informativo>
         <S.Imagens>
