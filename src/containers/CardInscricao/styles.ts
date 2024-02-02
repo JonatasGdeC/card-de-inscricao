@@ -79,6 +79,7 @@ export const Imagens = styled.div`
   background: linear-gradient(204.47deg, #ff6a3a 0%, #ff527b 100%);
   border-radius: 16px;
   position: relative;
+  max-width: 400px;
   width: 400px;
   height: 590px;
 

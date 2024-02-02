@@ -33,9 +33,8 @@ const CardInscricao: React.FC<CardInscricaoProps> = ({ onSubmit }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0.7 }}
-      animate={{ opacity: 1, transition: { delay: 0.3, duration: 0.3 } }}
-      exit={{ opacity: 0.7, transition: { duration: 0.3 } }}
+      initial={{ scale: 0 }}
+      animate={{ scale: 1, transition: { delay: 0.3, duration: 0.5 } }}
     >
       <S.Card>
         <S.Informativo>
@@ -90,9 +89,28 @@ const CardInscricao: React.FC<CardInscricaoProps> = ({ onSubmit }) => {
           </S.Form>
         </S.Informativo>
         <S.Imagens>
-          <img src={imgTablet} alt="" />
-          <img src={imgLousa} alt="" />
-          <img src={imgDados} alt="" />
+          <motion.img
+            initial={{ scale: 0, left: -100 }}
+            animate={{
+              scale: 1,
+              left: 0,
+              transition: { delay: 0.5, duration: 0.7 }
+            }}
+            src={imgTablet}
+            alt=""
+          />
+          <motion.img
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1, transition: { delay: 0.7, duration: 1.0 } }}
+            src={imgLousa}
+            alt=""
+          />
+          <motion.img
+            initial={{ right: -10 }}
+            animate={{ right: 0, transition: { delay: 0.5, duration: 0.7 } }}
+            src={imgDados}
+            alt=""
+          />
         </S.Imagens>
       </S.Card>
     </motion.div>
