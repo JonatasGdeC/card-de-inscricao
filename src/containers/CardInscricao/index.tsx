@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
@@ -6,9 +6,14 @@ import { Title, Text, Button } from '../../styles/index'
 import * as S from './styles'
 
 import imgCheck from '../../images/check.png'
+
 import imgTablet from '../../images/tablet.png'
 import imgLousa from '../../images/lousa.png'
 import imgDados from '../../images/dados.png'
+
+import imgTabletMobile from '../../images/tablet-mobile.png'
+import imgLousaMobile from '../../images/lousa-mobile.png'
+import imgDadosMobile from '../../images/dados-mobile.png'
 
 interface CardInscricaoProps {
   onSubmit: (email: string) => void
@@ -18,6 +23,7 @@ const CardInscricao: React.FC<CardInscricaoProps> = ({ onSubmit }) => {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [emailPreeenchido, setEmailPreenchido] = useState(true)
+  const [width, setWidth] = useState(window.innerWidth)
 
   const emailFilter = /^.+@.+\..{2,}$/
   // eslint-disable-next-line no-useless-escape
@@ -29,6 +35,24 @@ const CardInscricao: React.FC<CardInscricaoProps> = ({ onSubmit }) => {
       onSubmit(email)
       navigate('/thanks')
     }
+  }
+
+  const atualizarTamanhoDaTela = () => {
+    setWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', atualizarTamanhoDaTela)
+    return () => {
+      window.removeEventListener('resize', atualizarTamanhoDaTela)
+    }
+  })
+
+  const telaMobile = () => {
+    if (width > 1024) {
+      return false
+    }
+    return true
   }
 
   return (
@@ -96,19 +120,19 @@ const CardInscricao: React.FC<CardInscricaoProps> = ({ onSubmit }) => {
               left: 0,
               transition: { delay: 0.5, duration: 0.7 }
             }}
-            src={imgTablet}
+            src={telaMobile() ? imgTabletMobile : imgTablet}
             alt=""
           />
           <motion.img
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1, transition: { delay: 0.7, duration: 1.0 } }}
-            src={imgLousa}
+            src={telaMobile() ? imgLousaMobile : imgLousa}
             alt=""
           />
           <motion.img
             initial={{ right: -10 }}
             animate={{ right: 0, transition: { delay: 0.5, duration: 0.7 } }}
-            src={imgDados}
+            src={telaMobile() ? imgDadosMobile : imgDados}
             alt=""
           />
         </S.Imagens>

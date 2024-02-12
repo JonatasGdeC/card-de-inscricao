@@ -21,6 +21,10 @@ export const Title = styled.h1`
   margin: 24px 0;
   font-size: 56px;
   font-weight: 700;
+
+  @media (max-width: 1024px) {
+    font-size: 40px;
+  }
 `
 
 export const Text = styled.p`

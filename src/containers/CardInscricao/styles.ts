@@ -8,10 +8,20 @@ export const Card = styled.div`
   gap: 64px;
   padding: 24px 24px 24px 0;
   border-radius: 36px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column-reverse;
+    padding: 0;
+    gap: 0;
+  }
 `
 
 export const Informativo = styled.div`
   padding: 74px 0 74px 64px;
+
+  @media (max-width: 1024px) {
+    padding: 40px 24px;
+  }
 `
 
 export const Lista = styled.ul`
@@ -83,21 +93,39 @@ export const Imagens = styled.div`
   width: 400px;
   height: 590px;
 
+  @media (max-width: 1024px) {
+    max-width: 100%;
+    width: 100%;
+    height: 284px;
+  }
+
   img:nth-child(1) {
     position: absolute;
     left: 0;
     top: 210px;
+
+    @media (max-width: 1024px) {
+      top: 86px;
+    }
   }
 
   img:nth-child(2) {
     position: absolute;
     right: 0;
     top: 115px;
+
+    @media (max-width: 1024px) {
+      top: 36px;
+    }
   }
 
   img:nth-child(3) {
     position: absolute;
     right: 0;
     top: 90px;
+
+    @media (max-width: 1024px) {
+      top: 24px;
+    }
   }
 `
